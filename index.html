@@ -19,78 +19,10 @@
         vr-mode-ui="enabled: false"
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:720; displayWidth: 1280; displayHeight: 720; debugUIEnabled: false;'>
-        <a-entity gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: 18.17; latitude: 47.99;" animation-mixer/>
         <a-camera gps-camera rotation-reader simulateLatitude="47.99" simulateLongitude="18.17"></a-camera>
 		
 		
 	</a-scene> 
 	
-	
-	
-	<script>
-	
-	function setwebcam()
-{
-	
-	var options = true;
-	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
-	{
-		try{
-			navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-			  devices.forEach(function(device) {
-				if (device.kind === 'videoinput') {
-				  if(device.label.toLowerCase().search("back") >-1)
-					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
-				}
-				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
-			  });
-			  setwebcam2(options);
-			});
-		}
-		catch(e)
-		{
-			console.log(e);
-		}
-	}
-	else{
-		console.log("no navigator.mediaDevices.enumerateDevices" );
-		setwebcam2(options);
-	}
-	
-}
-
-function setwebcam2(options)
-{
-	
-    var n=navigator;
-
-
-
-    if(n.mediaDevices.getUserMedia)
-    {
-        n.mediaDevices.getUserMedia({video: options, audio: false}).
-            then(function(stream){
-                success(stream);
-            }).catch(function(error){
-                error(error)
-            });
-    }
-    else
-    if(n.getUserMedia)
-	{
-		webkit=true;
-        n.getUserMedia({video: options, audio: false}, success, error);
-	}
-    else
-    if(n.webkitGetUserMedia)
-    {
-        webkit=true;
-        n.webkitGetUserMedia({video:options, audio: false}, success, error);
-    }
-
-}
-	
-	</script>
 	
 </body>
