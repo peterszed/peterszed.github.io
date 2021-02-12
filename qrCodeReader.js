@@ -47,7 +47,7 @@ function startScan(constraints){
     })
 	.catch(
 		//constraints = { facingMode:  "environment" };
-		startScan(constraints);
+		//startScan(constraints);
 	
 	)
 }
