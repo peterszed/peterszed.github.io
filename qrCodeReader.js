@@ -68,8 +68,8 @@ QRcode.callback = (res) => {
 };
 
 
-btnScanQR.onclick = startScan(constraints);
-
+//btnScanQR.onclick = startScan(constraints);
+btnScanQR.addEventListener("click", startScan(constraints));
 
 /*btnScanQR.onclick = () =>{
 
