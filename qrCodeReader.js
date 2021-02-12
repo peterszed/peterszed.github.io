@@ -34,7 +34,7 @@ function qrDecode() {
 function startScan(constraints){
 	navigator.mediaDevices
     .getUserMedia({ video: constraints })
-    .then(function(stream) {
+    .then((stream) => {
       scanning = true;
       qrResult.hidden = true;
       btnScanQR.hidden = true;
@@ -45,11 +45,10 @@ function startScan(constraints){
       drawStreamFrame();
       qrDecode();
     })
-	.catch(
+	.catch( () => {
 		let constraints = { facingMode:  "environment" };
 		startScan(constraints);
-	
-	)
+	});
 }
 
 
