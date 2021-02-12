@@ -11,25 +11,46 @@ console.log("a")
 
 let scanning = false;
 
+let constraints = { facingMode: { exact: "environment" }};
 
-
-// functions
-function drawStremFrame() {
+// ====================================================== functions
+function drawStreamFrame() {
   canvasElement.height = video.videoHeight;
   canvasElement.width = video.videoWidth;
   canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
 
-  scanning && requestAnimationFrame(drawStremFrame);
+  scanning && requestAnimationFrame(drawStreamFrame);
 }
 
-function scan() {
+function qrDecode() {
   try {
     QRcode.decode();
   } catch (e) {
-    setTimeout(scan, 300);
+    setTimeout(qrDecode, 300);
   }
 }
 
+
+function startScan(constraints){
+	navigator.mediaDevices
+    .getUserMedia({ video: { facingMode: { exact: "environment" }} })
+    .then(function(stream) {
+      scanning = true;
+      qrResult.hidden = true;
+      btnScanQR.hidden = true;
+      canvasElement.hidden = false;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.srcObject = stream;
+      video.play();
+      drawStreamFrame();
+      qrDecode();
+    })
+	.catch(
+		constraints = { facingMode:  "environment" };
+		startScan(constraints);
+	
+	);
+}
 
 
 QRcode.callback = (res) => {
@@ -48,8 +69,11 @@ QRcode.callback = (res) => {
 };
 
 
-btnScanQR.onclick = () =>{
-	console.log("click")
+btnScanQR.onclick = startScan(constraints);
+
+
+/*btnScanQR.onclick = () =>{
+
   navigator.mediaDevices
     .getUserMedia({ video: { facingMode: { exact: "environment" }} })
     .then(function(stream) {
@@ -60,7 +84,7 @@ btnScanQR.onclick = () =>{
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.srcObject = stream;
       video.play();
-      drawStremFrame();
-      scan();
+      drawStreamFrame();
+      qrDecode();
     });
-};
+};*/
