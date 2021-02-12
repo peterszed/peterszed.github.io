@@ -49,7 +49,7 @@ function startScan(constraints){
 		//constraints = { facingMode:  "environment" };
 		startScan(constraints);
 	
-	);
+	)
 }
 
 
