@@ -7,7 +7,7 @@ const canvas = canvasElement.getContext("2d");
 const qrResult = document.getElementById("qr-result");
 const outputData = document.getElementById("outputData");
 const btnScanQR = document.getElementById("btn-scan-qr");
-console.log("a")
+
 
 let scanning = false;
 
@@ -46,7 +46,7 @@ function startScan(constraints){
       qrDecode();
     })
 	.catch(
-		constraints = { facingMode:  "environment" };
+		//constraints = { facingMode:  "environment" };
 		startScan(constraints);
 	
 	);
