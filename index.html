@@ -1,33 +1,26 @@
-<!DOCTYPE HTML>
-<head></head>
-<body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QR Code Scanner</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+  </head>
 
-<video
-  id="video"
-  width="300"
-  height="200"
-  style="border: 1px solid gray"
-></video>
+  <body>
+    <div id="container">
+      <h1>QR Code Scanner</h1>
 
-<script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
-<script type="text/javascript">
-  const codeReader = new ZXing.BrowserQRCodeReader();
-  
-  codeReader
-  .listVideoInputDevices()
-  .then(videoInputDevices => {
-    videoInputDevices.forEach(device =>
-      console.log(`${device.label}, ${device.deviceId}`)
-    );
-  })
-  .catch(err => console.error(err));
-  
-  
-  codeReader
-  .decodeOnceFromVideoDevice(undefined, 'video')
-  .then(result => alert(result.text))
-  .catch(err => console.error(err));
-  
-    
-</script>
-</body>
+     
+	  <button id="btn-scan-qr">Scan</button>
+
+      <canvas hidden="" id="qr-canvas"></canvas>
+
+      <div id="qr-result" hidden="">
+        <b>Data:</b> <span id="outputData"></span>
+      </div>
+    </div>
+
+    <script src="qrCodeReader.js"></script>
+  </body>
+</html>
