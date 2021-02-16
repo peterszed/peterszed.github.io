@@ -71,6 +71,15 @@
 	  alert('ZXing code reader initialized')
       const codeReader = new ZXing.BrowserMultiFormatReader()
       
+		try {
+			const codeReader = new ZXing.BrowserMultiFormatReader();
+			alert("codeREader ok");
+		}
+		catch(err) {
+			alert(err)
+		}
+	  
+	  
       /*codeReader.listVideoInputDevices()
         .then((videoInputDevices) => {
           const sourceSelect = document.getElementById('sourceSelect')
