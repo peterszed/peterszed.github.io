@@ -69,7 +69,7 @@
     window.addEventListener('load', function () {
       let selectedDeviceId;
       const codeReader = new ZXing.BrowserMultiFormatReader()
-      console.log('ZXing code reader initialized')
+      alert('ZXing code reader initialized')
       /*codeReader.listVideoInputDevices()
         .then((videoInputDevices) => {
           const sourceSelect = document.getElementById('sourceSelect')
@@ -91,6 +91,7 @@
           } */
 
           document.getElementById('startButton').addEventListener('click', () => {
+		  alert("clicked");
             codeReader.decodeFromVideoDevice(undefined, 'video', (result, err) => {
 			alert("read");
               if (result) {
