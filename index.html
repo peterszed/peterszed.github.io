@@ -96,7 +96,7 @@
                 console.log(result)
                 document.getElementById('result').textContent = result.text
               }
-              if (err && !(err instanceof ZXing.NotFoundException)) {
+              if (err) {
                 alert(err)
                 document.getElementById('result').textContent = err
               }
