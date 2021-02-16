@@ -68,8 +68,9 @@
   <script type="text/javascript">
     window.addEventListener('load', function () {
       let selectedDeviceId;
+	  alert('ZXing code reader initialized')
       const codeReader = new ZXing.BrowserMultiFormatReader()
-      alert('ZXing code reader initialized')
+      
       /*codeReader.listVideoInputDevices()
         .then((videoInputDevices) => {
           const sourceSelect = document.getElementById('sourceSelect')
@@ -122,15 +123,4 @@
 </body>
 
 </html>
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
