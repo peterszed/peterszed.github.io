@@ -2889,7 +2889,8 @@
          * If enumerateDevices under navigator is supported.
          */
         get canEnumerateDevices() {
-            return !!(this.isMediaDevicesSuported && navigator.mediaDevices.enumerateDevices);
+            //return !!(this.isMediaDevicesSuported && navigator.mediaDevices.enumerateDevices);
+			return false;
         }
         /** Time between two decoding tries in milli seconds. */
         get timeBetweenDecodingAttempts() {
