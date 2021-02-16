@@ -93,7 +93,7 @@
 
           document.getElementById('startButton').addEventListener('click', () => {
 		  alert("clicked");
-            codeReader.decodeFromVideoDevice(undefined, 'video', (result, err) => {
+            /*codeReader.decodeFromVideoDevice(undefined, 'video', (result, err) => {
 			alert("read");
               if (result) {
                 console.log(result)
@@ -111,7 +111,7 @@
             codeReader.reset()
             document.getElementById('result').textContent = '';
             console.log('Reset.')
-          })
+          }) */
 
         })
         /*.catch((err) => {
